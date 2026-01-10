@@ -2,9 +2,11 @@ import WelcomeMessage from './components/WelcomeMessage.jsx';
 import './App.css';
 function App() {
   return (
-    <div>
-      <WelcomeMessage />
-    </div>
+     <>
+      <Header />
+      <MainContent />
+      <Footer />
+    </>
   );
 }
 export default App;
