@@ -1,4 +1,4 @@
-import MainContent from './MainContent';
+
 function MainContent() {
   return (
     <main>
