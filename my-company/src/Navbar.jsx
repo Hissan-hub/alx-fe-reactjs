@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import About from "./About";
+import Services from "./Services";
+import Contact from "./Contact";
 
-function Navbar() {
+function App() {
   return (
-    <nav style={{ padding: "10px", backgroundColor: "#333" }}>
-      <Link style={{ color: "white", marginRight: "10px" }} to="/">Home</Link>
-      <Link style={{ color: "white", marginRight: "10px" }} to="/about">About</Link>
-      <Link style={{ color: "white", marginRight: "10px" }} to="/services">Services</Link>
-      <Link style={{ color: "white" }} to="/contact">Contact</Link>
-    </nav>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default Navbar;
+export default App;
