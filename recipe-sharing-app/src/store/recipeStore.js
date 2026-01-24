@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const useRecipeStore = create((set) => ({
+export const useRecipeStore = create((set) => ({
   recipes: [],
 
   addRecipe: (recipe) =>
@@ -20,5 +20,3 @@ const useRecipeStore = create((set) => ({
       recipes: state.recipes.filter((recipe) => recipe.id !== id),
     })),
 }));
-
-export default useRecipeStore;
