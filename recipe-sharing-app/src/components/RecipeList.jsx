@@ -7,10 +7,9 @@ const RecipeList = () => {
 
   return (
     <div>
-      {filteredRecipes.map((recipe) => (
-        <div key={recipe.id}>
+      {filteredRecipes.map((recipe, index) => (
+        <div key={index}>
           <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
         </div>
       ))}
     </div>
