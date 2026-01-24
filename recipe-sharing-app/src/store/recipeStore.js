@@ -1,15 +1,9 @@
 import { create } from 'zustand';
 
-export const useRecipeStore = create((set, get) => ({
+const useRecipeStore = create((set, get) => ({
   recipes: [],
   searchTerm: '',
   filteredRecipes: [],
-
-  addRecipe: (recipe) =>
-    set((state) => ({
-      recipes: [...state.recipes, recipe],
-      filteredRecipes: [...state.recipes, recipe],
-    })),
 
   setSearchTerm: (term) => {
     set({ searchTerm: term });
@@ -23,3 +17,5 @@ export const useRecipeStore = create((set, get) => ({
       ),
     })),
 }));
+
+export default useRecipeStore;
