@@ -10,7 +10,7 @@ const AddRecipeForm = () => {
     e.preventDefault();
 
     addRecipe({
-      id: Date.now(),
+      id: Date.now().toString(),
       title,
       description,
     });
@@ -23,15 +23,19 @@ const AddRecipeForm = () => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Recipe title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
+
       <textarea
-        placeholder="Description"
+        placeholder="Recipe description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        required
       />
+
       <button type="submit">Add Recipe</button>
     </form>
   );

@@ -5,10 +5,8 @@ import DeleteRecipeButton from './DeleteRecipeButton';
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const recipeId = Number(id);
-
   const recipe = useRecipeStore((state) =>
-    state.recipes.find((r) => r.id === recipeId)
+    state.recipes.find((r) => r.id === id)
   );
 
   if (!recipe) {
@@ -17,7 +15,7 @@ const RecipeDetail = () => {
 
   return (
     <div>
-      <h2>{recipe.title}</h2>
+      <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
 
       <EditRecipeForm recipe={recipe} />

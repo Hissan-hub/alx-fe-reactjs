@@ -7,6 +7,7 @@ const RecipeList = () => {
   return (
     <div>
       <h2>Recipes</h2>
+
       {recipes.map((recipe) => (
         <div key={recipe.id}>
           <Link to={`/recipes/${recipe.id}`}>
