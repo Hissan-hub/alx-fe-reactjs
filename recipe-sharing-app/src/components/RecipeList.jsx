@@ -1,13 +1,13 @@
 import useRecipeStore from '../store/recipeStore';
 
 const RecipeList = () => {
-  const filteredRecipes = useRecipeStore(
-    (state) => state.filteredRecipes
+  const recipes = useRecipeStore((state) =>
+    state.searchTerm ? state.filteredRecipes : state.recipes
   );
 
   return (
     <div>
-      {filteredRecipes.map((recipe) => (
+      {recipes.map((recipe) => (
         <div key={recipe.id}>
           <h3>{recipe.title}</h3>
         </div>
