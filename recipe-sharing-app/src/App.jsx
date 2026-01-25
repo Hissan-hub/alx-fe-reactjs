@@ -1,13 +1,22 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
-import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
 function App() {
   return (
     <BrowserRouter>
-      <SearchBar />
       <Routes>
-        <Route path="/" element={<RecipeList />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <RecipeList />
+              <FavoritesList />
+              <RecommendationsList />
+            </>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
