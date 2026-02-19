@@ -1,48 +1,63 @@
 import { useState } from "react";
-import AddTodoForm from "./AddTodoForm";
 
 export default function TodoList() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "Learn React", done: false },
-    { id: 2, text: "Write Tests", done: false },
-  ]);
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState("");
 
-  const addTodo = (text) => {
-    setTodos([...todos, { id: Date.now(), text, done: false }]);
+  const handleAdd = () => {
+    if (input.trim() === "") return;
+
+    setTodos([
+      ...todos,
+      { id: Date.now(), text: input, completed: false }
+    ]);
+    setInput("");
   };
 
-  const toggleTodo = (id) => {
+  const handleToggle = (id) => {
     setTodos(
-      todos.map(t =>
-        t.id === id ? { ...t, done: !t.done } : t
+      todos.map(todo =>
+        todo.id === id
+          ? { ...todo, completed: !todo.completed }
+          : todo
       )
     );
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter(t => t.id !== id));
+  const handleDelete = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   return (
     <div>
       <h1>Todo List</h1>
 
-      <AddTodoForm onAdd={addTodo} />
+      <input
+        type="text"
+        placeholder="Add a new task"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+
+      <button onClick={handleAdd}>
+        Add Task
+      </button>
 
       <ul>
         {todos.map(todo => (
           <li key={todo.id}>
             <span
-              onClick={() => toggleTodo(todo.id)}
+              onClick={() => handleToggle(todo.id)}
               style={{
-                textDecoration: todo.done ? "line-through" : "none",
-                cursor: "pointer"
+                textDecoration: todo.completed
+                  ? "line-through"
+                  : "none"
               }}
             >
               {todo.text}
             </span>
 
-            <button onClick={() => deleteTodo(todo.id)}>
+            <button onClick={() => handleDelete(todo.id)}>
               Delete
             </button>
           </li>
